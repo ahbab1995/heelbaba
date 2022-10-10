@@ -7,6 +7,7 @@ import NavBar from "./components/Navbar/Navbar";
 import Product from "./components/Products/Product/Product";
 import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
 import Products from "./components/Products/Products";
+import Register from "./components/Register/Register";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
          
         </Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
       </Routes>
     </div>
   );

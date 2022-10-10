@@ -3,14 +3,13 @@ import { Button, Card, ListGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const Product = ({ product }) => {
+  const { id, name, img, description, price } = product;
 
-  const { id,name, img, description, price } = product;
-
-  const navigate =  useNavigate()
+  const navigate = useNavigate();
 
   const ProductDetsilNav = (id) => {
-    navigate(`/productdetail/${id}`)
-  }
+    navigate(`/productdetail/${id}`);
+  };
   return (
     <div className="col pt-3">
       <Card style={{ width: "18rem" }}>
@@ -23,7 +22,9 @@ const Product = ({ product }) => {
           <ListGroup.Item>{price}</ListGroup.Item>
         </ListGroup>
         <Card.Body>
-          <Button onClick={() => ProductDetsilNav(id) } variant="primary">Detail</Button>
+          <Button onClick={() => ProductDetsilNav(id)} variant="primary">
+            Detail
+          </Button>
         </Card.Body>
       </Card>
     </div>
