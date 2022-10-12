@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
 
 const Register = () => {
   const emailRef = useRef("");
@@ -15,7 +16,11 @@ const Register = () => {
     user,
     loading,
     error,
-  ] = useCreateUserWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
+
+  if(loading){
+    return <Loading></Loading>
+  }
 
   if(user){
     navigate('/products')

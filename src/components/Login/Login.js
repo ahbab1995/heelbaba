@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
 import SocialMedia from "../SocialMedia/SocialMedia";
 
 const Login = () => {
@@ -11,13 +12,15 @@ const Login = () => {
 
   const location = useLocation();
 
-  let from = location.state?.from?.pathname || "/products";
+  let from = location.state?.from?.pathname || "/";
 
   const navigate = useNavigate();
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-
+  if(loading){
+    return <Loading></Loading>
+  }
   if (user) {
     navigate(from, { replace: true });
   }
