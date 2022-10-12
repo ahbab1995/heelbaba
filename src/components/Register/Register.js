@@ -1,16 +1,31 @@
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from "../../firebase.init";
 
 const Register = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
 
+  const navigate = useNavigate();
+
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+
+  if(user){
+    navigate('/products')
+  }
+
   const handelRegisterForm = (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email, password);
+    createUserWithEmailAndPassword(email,password)
   };
   return (
     <div>

@@ -8,6 +8,7 @@ import Product from "./components/Products/Product/Product";
 import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
 import Products from "./components/Products/Products";
 import Register from "./components/Register/Register";
+import RequireAuth from "./components/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -15,16 +16,21 @@ function App() {
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/products" element={<Products></Products>}></Route>
+        <Route
+          path="/products"
+          element={
+            <RequireAuth>
+              <Products></Products>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/product" element={<Product></Product>}></Route>
         <Route
           path="/productdetail/:detailId"
           element={<ProductDetails></ProductDetails>}
-        >
-         
-        </Route>
+        ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
-        <Route path='/register' element={<Register></Register>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
       </Routes>
     </div>
   );
