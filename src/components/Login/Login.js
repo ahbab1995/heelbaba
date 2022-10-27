@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Loading/Loading";
+import Pagetitle from "../Pagetitle/Pagetitle";
 import SocialMedia from "../SocialMedia/SocialMedia";
 
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, user, loading] =
     useSignInWithEmailAndPassword(auth);
   if(loading){
     return <Loading></Loading>
@@ -33,6 +34,7 @@ const Login = () => {
   };
   return (
     <div>
+    <Pagetitle title="Login"></Pagetitle>
       <Form className="w-50 mx-auto" onSubmit={handelLoginForm}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>

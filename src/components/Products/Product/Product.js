@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Pagetitle from "../../Pagetitle/Pagetitle";
 
 const Product = ({ product }) => {
   const { id, name, img, description, price } = product;
@@ -12,6 +13,7 @@ const Product = ({ product }) => {
   };
   return (
     <div className="col pt-3">
+     <Pagetitle title="Product"></Pagetitle>
       <Card style={{ width: "18rem" }}>
         <Card.Img style={{ height: "15rem" }} variant="top" src={img} />
         <Card.Body>
